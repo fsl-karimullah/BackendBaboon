@@ -56,7 +56,7 @@ class BookResource extends Resource
                         ->imagePreviewHeight(400)
                         ->maxSize(1048)
                         ->columnSpan([
-                            'md' => 2
+                            'md' => 2,
                         ])
                         ->label(__('strings.cover_picture'))
                         ->directory('bookThumbnails')
@@ -135,7 +135,7 @@ class BookResource extends Resource
                     Textarea::make('description')
                         ->label(__('strings.description'))
                         ->columnSpan([
-                            'md' => 2
+                            'md' => 2,
                         ])
                         ->required(),
                 ])->columns(),

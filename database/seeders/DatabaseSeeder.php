@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        \App\Models\User::factory(10)->create();
         $this->call(CategorySeeder::class);
+        \App\Models\Book::factory(10)->create();
         Admin::create([
             'name' => 'Faruk',
             'email' => 'admin@bookstore.com',
