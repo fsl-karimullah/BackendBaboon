@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Bookmark extends Model
 {
     public $timestamps = false;
+
     public $guarded = ['id'];
 
     public function user(): BelongsTo

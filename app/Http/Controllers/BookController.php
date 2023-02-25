@@ -32,18 +32,18 @@ class BookController extends Controller
 
         $isBookmarkExists = Bookmark::where([
             ['user_id', $user->id],
-            ['book_id', $book->id]
+            ['book_id', $book->id],
         ])->count();
 
         if ($isBookmarkExists) {
             throw ValidationException::withMessages(
-                ["books" => "Buku telah di bookmark"]
+                ['books' => 'Buku telah di bookmark']
             );
         }
 
         $bookmark = Bookmark::create([
             'user_id' => $user->id,
-            'book_id' => $book->id
+            'book_id' => $book->id,
         ]);
 
         return $bookmark;
