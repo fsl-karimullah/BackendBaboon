@@ -27,7 +27,8 @@ Route::middleware('guest')->group(function () {
     //     ->name('password.email');
 });
 
-Route::prefix('books')->group(function () {
+Route::prefix('books')->middleware('auth:sanctum')->group(function () {
     Route::get('/', [BookController::class, 'index']);
     Route::get('/{book}', [BookController::class, 'show']);
+    Route::post('/{book}/bookmark', [BookController::class, 'bookmarkBook']);
 });
