@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Books\BookCollection;
+use App\Http\Resources\Books\BookmarkCollection;
 use App\Http\Resources\Books\BookResource;
 use App\Models\Book;
 use App\Models\Bookmark;
@@ -47,5 +48,12 @@ class BookController extends Controller
         ]);
 
         return $bookmark;
+    }
+
+    public function getAllBookmarks(Request $request)
+    {
+        $user = $request->user();
+
+        return new BookmarkCollection($user->bookmarks);
     }
 }
