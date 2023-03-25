@@ -58,8 +58,22 @@ class BookResource extends Resource
                         ->columnSpan([
                             'md' => 2,
                         ])
-                        ->label(__('strings.cover_picture'))
+                        ->label(__('strings.'))
                         ->directory('bookThumbnails')
+                        ->required(),
+                    FileUpload::make('pdf_file')
+                        ->columnSpan([
+                            'md' => 2,
+                        ])
+                        ->label(__('strings.pdf_file'))
+                        ->directory('public')
+                        ->required(),
+                    FileUpload::make('pdf_file_preview')
+                        ->columnSpan([
+                            'md' => 2,
+                        ])
+                        ->label(__('strings.pdf_file_preview'))
+                        ->directory('public')
                         ->required(),
                     TextInput::make('isbn')
                         ->label('ISBN')

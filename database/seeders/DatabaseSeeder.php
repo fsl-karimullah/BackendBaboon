@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         \App\Models\Book::factory(10)->create();
         Admin::create([
-            'name' => 'Faruk',
+            'name' => 'Faisal',
             'email' => 'admin@bookstore.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
         ]);

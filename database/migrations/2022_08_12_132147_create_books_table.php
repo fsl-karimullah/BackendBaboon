@@ -21,9 +21,11 @@ return new class extends Migration
             $table->json('authors');
             $table->string('publisher', 100);
             $table->date('published_date');
-            $table->unsignedSmallInteger('page_count');
+            $table->unsignedSmallInteger('page_count'); 
             $table->unsignedInteger('price');
             $table->string('thumbnail');
+            $table->string('pdf_file')->nullable();
+            $table->string('pdf_file_preview')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

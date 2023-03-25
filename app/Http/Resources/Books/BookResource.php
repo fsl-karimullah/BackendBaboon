@@ -14,11 +14,13 @@ class BookResource extends JsonResource
             'category' => $this->category->name,
             'title' => $this->title,
             'authors' => $this->authors,
-            'description' => $this->description,
+            'description' => $this->description, 
             'publisher' => $this->publisher,
             'publishedDate' => $this->published_date,
             'pageCount' => $this->page_count,
             'thumbnail' => $this->thumbnail,
+            'pdf_preview' => $this->pdf_file_preview ? asset('/storage/' . $this->pdf_file_preview) : null,
+            'pdf_full' => $this->pdf_file ? asset('/storage/' . $this->pdf_file) : null
         ];
     }
 }
