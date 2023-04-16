@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->dateTime('subscription_exp_date')->nullable();
-            $table->boolean('is_subscribed')->virtualAs('subscription_exp_date >= CURRENT_DATE()');
             $table->timestamps();
         });
     }
