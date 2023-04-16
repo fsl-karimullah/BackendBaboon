@@ -22,6 +22,16 @@ class User extends Authenticatable
         'subscription_exp_date',
     ];
 
+    protected $appends = [
+        'is_subscribed'
+    ];
+
+    public function getIsSubscribedAttribute(): bool
+    {
+        return $this->subscription_exp_date >= now();
+    }
+
+
     protected $hidden = [
         'password',
     ];
