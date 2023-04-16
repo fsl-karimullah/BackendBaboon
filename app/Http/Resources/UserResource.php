@@ -10,6 +10,9 @@ class UserResource extends JsonResource
     {
         return [
             'name' => $this->name,
+            'instance' => $this->instance,
+            'phone_number' => $this->phone_number,
+            'avatar' =>  $this->avatar ? asset('/storage/' . $this->avatar) : null,
             'email' => $this->email,
             'token' => $this->createToken($request->getClientIp())->plainTextToken,
         ];

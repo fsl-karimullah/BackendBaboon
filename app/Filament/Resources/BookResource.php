@@ -58,7 +58,7 @@ class BookResource extends Resource
                         ->columnSpan([
                             'md' => 2,
                         ])
-                        ->label(__('strings.'))
+                        ->label(__('strings.cover_picture'))
                         ->directory('bookThumbnails')
                         ->required(),
                     FileUpload::make('pdf_file')

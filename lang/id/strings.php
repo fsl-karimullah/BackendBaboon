@@ -11,7 +11,7 @@ return [
     'price' => 'Harga',
     'description' => 'Deskripsi',
     'cover_picture' => 'Gambar sampul',
-
+    
     'name' => 'Nama',
     'category' => 'Kategori',
     'books_count' => 'Jumlah buku',
