@@ -11,7 +11,7 @@ use Midtrans\Snap;
 class SubscriptionController extends Controller
 {
     public function __construct()
-    {
+    { 
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         Config::$isProduction = false;
         Config::$isSanitized = true;

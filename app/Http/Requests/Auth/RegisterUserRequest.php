@@ -17,7 +17,7 @@ class RegisterUserRequest extends FormRequest
             'name' => 'string|required|max:100',
             'instance' => 'string|required|max:100',
             'phone_number' => 'string|required|max:100',
-            'avatar' => 'required|image|max:4096',
+            // 'avatar' => 'required|image|max:4096',
             'email' => 'string|required|max:100|unique:App\Models\User,email',
             'password' => 'confirmed|required|string|max:100|min:5',
             'password_confirmation' => 'required|string',

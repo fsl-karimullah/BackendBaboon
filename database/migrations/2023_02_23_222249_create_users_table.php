@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('instance');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->string('phone_number');
-            $table->string('email')->unique();
+            $table->string('email')->unique(); 
             $table->string('password');
             $table->dateTime('subscription_exp_date')->nullable();
-            $table->boolean('is_subscribed')->virtualAs('subscription_exp_date >= CURRENT_DATE()');
+            $table->boolean('is_subscribed')->default_false('subscription_exp_date >= 2023/04/16');
             $table->timestamps();
         });
     }
