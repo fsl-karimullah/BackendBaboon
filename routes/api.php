@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,12 +28,15 @@ Route::middleware('guest')->group(function () {
     //     ->name('password.email');
 });
 
-Route::prefix('books')->middleware('auth:sanctum')->group(function () {
-    Route::get('/', [BookController::class, 'index']);
-    Route::get('/{book}', [BookController::class, 'show']);
-    Route::post('/{book}/bookmark', [BookController::class, 'bookmarkBook']);
-});
+Route::post('subscribe/handling', [SubscriptionController::class, 'handling']);
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::prefix('books')->group(function () {
+        Route::get('/', [BookController::class, 'index']);
+        Route::get('/{book}', [BookController::class, 'show']);
+        Route::post('/{book}/bookmark', [BookController::class, 'bookmarkBook']);
+    });
+
     Route::get('bookmarks', [BookController::class, 'getAllBookmarks']);
+    Route::post('subscribe/{option}', [SubscriptionController::class, 'pay']);
 });

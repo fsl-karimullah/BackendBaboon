@@ -37,22 +37,25 @@ class AuthController extends Controller
 
         return ['data' => $user];
     }
-    public function profileedit($id, Request $request){
+
+    public function profileedit($id, Request $request)
+    {
 
         //validator place
-      
+
         $users = user::find($id);
         $users->name = $request->firstName;
-        $users->thumbnail = $request->avatar->store('avatars','public');
+        $users->thumbnail = $request->avatar->store('avatars', 'public');
         $users->save();
-      
+
         $data[] = [
-          'id'=>$users->uid,
-          'name'=>$users->name,
-          'avatar'=>Storage::url($users->thumbnail),
-          'status'=>200,
+            'id' => $users->uid,
+            'name' => $users->name,
+            'avatar' => Storage::url($users->thumbnail),
+            'status' => 200,
         ];
+
         return response()->json($data);
-      
+
       }
 }

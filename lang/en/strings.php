@@ -15,8 +15,8 @@ return [
     'name' => 'Name',
     'category' => 'Category',
     'books_count' => 'Books count',
-    "pdf_file_preview" => "PDF File Preview",
-    "pdf_file" => "PDF File Full",
+    'pdf_file_preview' => 'PDF File Preview',
+    'pdf_file' => 'PDF File Full',
     'failed_finding_book_data' => 'Failed finding book data, please fill in manually',
     'please_enter_isbn_number' => 'Please enter ISBN number',
 ];
