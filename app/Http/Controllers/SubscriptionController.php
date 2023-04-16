@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscription;
 use App\Models\SubscriptionOption;
-use Illuminate\Http\Request;
 use Midtrans\Config;
-use Midtrans\ApiRequestor;
 use Midtrans\Notification;
 use Midtrans\Snap;
 
 class SubscriptionController extends Controller
 {
-
     public function __construct()
     {
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');
@@ -21,25 +18,24 @@ class SubscriptionController extends Controller
         Config::$is3ds = true;
     }
 
-
     public function pay(SubscriptionOption $option)
     {
         $name = "Langganan Polije Press $option->period Bulan";
         $price = $option->price;
         $user = auth()->user();
-        $orderId = 'SUB' . rand(100000000, 999999999);
+        $orderId = 'SUB'.rand(100000000, 999999999);
 
         $params = [
             'transaction_details' => [
                 'order_id' => $orderId,
                 'gross_amount' => $price,
             ],
-            "item_details" => [
+            'item_details' => [
                 [
                     'id' => $option->id,
-                    "price" => $price,
-                    "quantity" => 1,
-                    "name" => $name
+                    'price' => $price,
+                    'quantity' => 1,
+                    'name' => $name,
                 ],
             ],
             'customer_details' => [
@@ -55,8 +51,9 @@ class SubscriptionController extends Controller
             'order_id' => $orderId,
             'redirect_url' => $snapUrl,
             'price' => $price,
-            'period' => $option->period
+            'period' => $option->period,
         ]);
+
         return $subscription;
     }
 
@@ -78,15 +75,15 @@ class SubscriptionController extends Controller
                     $subscription->status = 'SUCCESS';
                 }
             }
-        } else if ($transaction == 'settlement') {
+        } elseif ($transaction == 'settlement') {
             $subscription->status = 'SUCCESS';
-        } else if ($transaction == 'pending') {
+        } elseif ($transaction == 'pending') {
             $subscription->status = 'PENDING';
-        } else if ($transaction == 'deny') {
+        } elseif ($transaction == 'deny') {
             $subscription->status = 'DENIED';
-        } else if ($transaction == 'expire') {
+        } elseif ($transaction == 'expire') {
             $subscription->status = 'EXPIRED';
-        } else if ($transaction == 'cancel') {
+        } elseif ($transaction == 'cancel') {
             $subscription->status = 'DENIED';
         }
 

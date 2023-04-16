@@ -19,7 +19,7 @@ class Subscription extends Model
             if ($model->status == 'SUCCESS') {
                 $user = $model->user;
                 $user->update([
-                    'subscription_exp_date' => now()->addMonth($model->period)
+                    'subscription_exp_date' => now()->addMonth($model->period),
                 ]);
             }
         });

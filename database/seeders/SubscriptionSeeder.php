@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\SubscriptionOption;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SubscriptionSeeder extends Seeder
@@ -18,15 +17,15 @@ class SubscriptionSeeder extends Seeder
         SubscriptionOption::insert([
             [
                 'period' => 1,
-                'price' => 10000
+                'price' => 10000,
             ],
             [
                 'period' => 2,
-                'price' => 15000
+                'price' => 15000,
             ],
             [
                 'period' => 3,
-                'price' => 20000
+                'price' => 20000,
             ],
         ]);
     }

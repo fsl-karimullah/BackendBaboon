@@ -19,7 +19,7 @@ class User extends Authenticatable
         'instance',
         'phone_number',
         'password',
-        'subscription_exp_date'
+        'subscription_exp_date',
     ];
 
     protected $hidden = [

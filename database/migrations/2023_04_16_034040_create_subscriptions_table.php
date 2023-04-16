@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('redirect_url');
             $table->unsignedTinyInteger('period');
             $table->unsignedBigInteger('price');
-            $table->enum('status', ['PENDING', 'SUCCESS', 'FAILED', 'CHALLENGE', 'DENIED', 'EXPIRED',])
+            $table->enum('status', ['PENDING', 'SUCCESS', 'FAILED', 'CHALLENGE', 'DENIED', 'EXPIRED'])
                 ->default('PENDING');
             $table->timestamps();
         });

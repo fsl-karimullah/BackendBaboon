@@ -13,8 +13,8 @@ class BookCollection extends ResourceCollection
                 'id' => $book->id,
                 'title' => $book->title,
                 'authors' => $book->authors,
-                'thumbnail' => $book->thumbnail ? asset('/storage/' . $book->thumbnail) : null,
+                'thumbnail' => $book->thumbnail ? asset('/storage/'.$book->thumbnail) : null,
             ]
         );
-    } 
+    }
 }

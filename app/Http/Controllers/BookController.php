@@ -21,7 +21,7 @@ class BookController extends Controller
 
         return new BookCollection($books->paginate(10));
     }
- 
+
     public function show(Book $book)
     {
         return new BookResource($book);
