@@ -15,6 +15,7 @@ class UserResource extends JsonResource
             'avatar' => $this->avatar ? asset('/storage/'.$this->avatar) : null,
             'email' => $this->email,
             'token' => $this->createToken($request->getClientIp())->plainTextToken,
+            'is_subscribed' => $this->is_subscribed,
         ];
     }
 }
