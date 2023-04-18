@@ -125,4 +125,9 @@ return [
     'uploaded' => ':Attribute gagal diunggah.',
     'url' => 'Format :attribute tidak valid.',
     'uuid' => ':Attribute harus merupakan UUID yang valid.',
+
+    'attributes' => [
+        'instance' => 'instansi',
+        'phone_number' => 'nomor telepon',
+    ],
 ];

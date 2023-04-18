@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\UserWithoutToken;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -38,24 +39,26 @@ class AuthController extends Controller
         return ['data' => $user];
     }
 
-    public function profileedit($id, Request $request)
+    public function changeProfile(Request $request)
     {
+        $user = auth()->user();
 
-        //validator place
+        $data = $request->validate([
+            'name' => 'string',
+            'avatar' => 'image|max:5048',
+            'phone_number' => 'string',
+            'email' => 'string',
+            'instance' => 'string',
+        ]);
 
-        $users = user::find($id);
-        $users->name = $request->firstName;
-        $users->thumbnail = $request->avatar->store('avatars', 'public');
-        $users->save();
+        if ($data['avatar']) {
+            $url = $request->file('avatar')->storePublicly('public/avatars');
+            $data['avatar'] = str_replace('public/', '', $url);
+        }
 
-        $data[] = [
-            'id' => $users->uid,
-            'name' => $users->name,
-            'avatar' => Storage::url($users->thumbnail),
-            'status' => 200,
-        ];
+        $user->update($data);
 
-        return response()->json($data);
+        return new UserWithoutToken($user);
 
       }
 }
