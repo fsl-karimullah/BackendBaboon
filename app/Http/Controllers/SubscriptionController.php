@@ -18,6 +18,11 @@ class SubscriptionController extends Controller
         Config::$is3ds = true;
     }
 
+    public function index()
+    {
+        return ['data' => SubscriptionOption::all(['id', 'period'])];
+    }
+
     public function pay(SubscriptionOption $option)
     {
         $name = "Langganan Polije Press $option->period Bulan";

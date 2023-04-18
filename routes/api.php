@@ -38,7 +38,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::get('bookmarks', [BookController::class, 'getAllBookmarks']);
+
     Route::post('subscribe/{option}', [SubscriptionController::class, 'pay']);
+    Route::get('subscriptions', [SubscriptionController::class, 'index']);
 
     Route::post('/profile', [AuthController::class, 'changeProfile']);
 });
