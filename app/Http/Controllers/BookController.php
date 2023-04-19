@@ -15,8 +15,12 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $books = Book::query();
-        if ($request->query('categoryId')) {
-            $books->where('category_id', $request->query('categoryId'));
+        if ($request->query('category_id')) {
+            $books->where('category_id', $request->query('category_id'));
+        }
+
+        if ($request->query('query')) {
+            $books->where('title', 'like', '%' . $request->query('query') . '%');
         }
 
         return new BookCollection($books->paginate(10));
