@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasMany(Bookmark::class);
     }
 
+    public function subscriptions() : HasMany
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
     public static function boot()
     {
         parent::boot();

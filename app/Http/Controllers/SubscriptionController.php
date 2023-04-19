@@ -11,7 +11,7 @@ use Midtrans\Snap;
 class SubscriptionController extends Controller
 {
     public function __construct()
-    { 
+    {
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         Config::$isProduction = false;
         Config::$isSanitized = true;
@@ -25,10 +25,23 @@ class SubscriptionController extends Controller
 
     public function pay(SubscriptionOption $option)
     {
+        $user = auth()->user();
+
+        abort_if($user->is_subscribed, 403, 'Anda telah subscribe');
+
+        $pendingPayment = Subscription::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'PENDING'],
+            ['period', '=', $option->period]
+        ])->first();
+
+        if ($pendingPayment) {
+            return ['data' => $pendingPayment];
+        }
+
         $name = "Langganan Polije Press $option->period Bulan";
         $price = $option->price;
-        $user = auth()->user();
-        $orderId = 'SUB'.rand(100000000, 999999999);
+        $orderId = 'SUB' . rand(100000000, 999999999);
 
         $params = [
             'transaction_details' => [
@@ -59,7 +72,7 @@ class SubscriptionController extends Controller
             'period' => $option->period,
         ]);
 
-        return $subscription;
+        return ['data' => $subscription];
     }
 
     public function handling()
