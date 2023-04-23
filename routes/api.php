@@ -40,6 +40,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::get('bookmarks', [BookController::class, 'getAllBookmarks']);
+    Route::delete('bookmarks/{bookmark}', [BookController::class, 'removeBookmark']);
 
     Route::post('subscribe/{option}', [SubscriptionController::class, 'pay']);
     Route::get('subscriptions', [SubscriptionController::class, 'index']);

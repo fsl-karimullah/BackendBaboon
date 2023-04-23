@@ -60,4 +60,13 @@ class BookController extends Controller
 
         return new BookmarkCollection($user->bookmarks);
     }
+
+    public function removeBookmark(Bookmark $bookmark)
+    {
+        abort_if($bookmark->user->id != auth()->user()->id, 403);
+
+        $bookmark->delete();
+
+        return $bookmark;
+    }
 }
