@@ -20,7 +20,7 @@ class BookController extends Controller
         }
 
         if ($request->query('query')) {
-            $books->where('title', 'like', '%' . $request->query('query') . '%');
+            $books->where('title', 'like', '%'.$request->query('query').'%');
         }
 
         return new BookCollection($books->paginate(10));

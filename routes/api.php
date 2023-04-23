@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,4 +45,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('subscriptions', [SubscriptionController::class, 'index']);
 
     Route::post('/profile', [AuthController::class, 'changeProfile']);
+
+    Route::get('categories', [CategoryController::class, 'index']);
 });

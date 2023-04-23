@@ -32,7 +32,7 @@ class SubscriptionController extends Controller
         $pendingPayment = Subscription::where([
             ['user_id', '=', $user->id],
             ['status', '=', 'PENDING'],
-            ['period', '=', $option->period]
+            ['period', '=', $option->period],
         ])->first();
 
         if ($pendingPayment) {
@@ -41,7 +41,7 @@ class SubscriptionController extends Controller
 
         $name = "Langganan Polije Press $option->period Bulan";
         $price = $option->price;
-        $orderId = 'SUB' . rand(100000000, 999999999);
+        $orderId = 'SUB'.rand(100000000, 999999999);
 
         $params = [
             'transaction_details' => [

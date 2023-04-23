@@ -42,7 +42,7 @@ class User extends Authenticatable
         return $this->hasMany(Bookmark::class);
     }
 
-    public function subscriptions() : HasMany
+    public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class);
     }
