@@ -48,4 +48,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/profile', [AuthController::class, 'changeProfile']);
 
     Route::get('categories', [CategoryController::class, 'index']);
+
+    Route::post('logout', [AuthController::class, 'logout']);
 });

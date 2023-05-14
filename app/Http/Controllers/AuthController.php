@@ -61,4 +61,13 @@ class AuthController extends Controller
         return new UserWithoutToken($user);
 
       }
+
+      public function logout(Request $request)
+      {
+          $request->user()->currentAccessToken()->delete();
+
+          return [
+              'data' => ['message' => 'Berhasil logout'],
+          ];
+      }
 }
